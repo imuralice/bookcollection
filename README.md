@@ -11,6 +11,16 @@ This repository contains a custom WordPress theme (`bookcollection-theme`) and p
 
 ---
 
+## Screenshots
+
+### Homepage
+![Homepage Screenshot](./homepage-screenshot.png)
+
+### Books Archive Page
+![Books Page Screenshot](./books-page-screenshot.png)
+
+---
+
 ## Installation Instructions
 
 ### 1. Install the Theme
