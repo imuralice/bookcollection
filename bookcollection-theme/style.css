@@ -1,0 +1,565 @@
+/*
+Theme Name: BookCollection
+Author: Anoop Kumar
+Version: 1.0
+*/
+
+/* Book Grid Layout */
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive columns */
+    gap: 2rem; /* Spacing between cards */
+    padding: 3rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.book-item {
+    background: linear-gradient(135deg, #2196F3 0%, #21D4FD 100%);
+    border-radius: 15px;
+    padding: 2rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    color: white;
+    overflow: hidden; /* Prevent content from spilling out */
+    
+}
+
+.book-item:hover {
+    transform: scale(1.05);
+}
+
+.book-item h3 {
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.book-item p {
+    margin: 0.5rem 0;
+    color: rgba(255,255,255,0.8);
+}
+
+.featured-ribbon {
+    background: #ff6b6b;
+    color: white;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 0.8rem;
+}
+
+.description {
+    font-size: 0.9rem;
+    margin: 1rem 1.5rem;
+    color: #7f8c8d;
+}
+
+.book-item,
+.swiper-slide {
+    pointer-events: auto !important;
+}
+
+/* Gradient Overlay on Hover */
+.book-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0) 50%,
+        rgba(240,240,240,0.9)
+    );
+    opacity: 0;
+    transition: opacity 0.3s;
+    border-radius: 15px;
+    pointer-events: none; /* Allow clicks through the overlay */
+}
+
+.book-item:hover::before {
+    opacity: 1;
+}
+
+/* Read More Button */
+.read-more {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #3498db;
+    color: white;
+    padding: 0.6rem 1.5rem;
+    border-radius: 25px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.8rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.book-item:hover .read-more {
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .book-grid {
+        grid-template-columns: 1fr;
+        padding: 2rem;
+    }
+
+    .book-item {
+        box-shadow: none;
+        border: 1px solid #f0f0f0;
+        padding: 1.5rem;
+    }
+    .hero-section {
+        padding: 6rem 1rem;
+        border-radius: 0;
+    }
+
+    .hero-section h1 {
+        font-size: 2.25rem;
+    }
+
+    .hero-section .subtitle {
+        font-size: 1.1rem;
+    }
+
+    .single-book-container {
+        grid-template-columns: 1fr;
+    }
+    .footer-logo {
+        font-size: 1.75rem;
+    }
+
+    .social-icons {
+        gap: 1rem;
+    }
+}
+
+
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, #2196F3 0%, #21D4FD 100%);
+    padding: 8rem 2rem;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    border-radius: 0 0 50% 50% / 30%;
+    margin-bottom: 3rem;
+}
+
+.hero-section h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.hero-section .subtitle {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    line-height: 1.6;
+}
+
+.hero-section .btn {
+    background: white;
+    color: #2196F3;
+    padding: 1rem 2.5rem;
+    border-radius: 30px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: inline-block;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    
+}
+
+.hero-section .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.hero-content {
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.swiper-pagination-bullet {
+    background: #2196F3;
+    opacity: 1;
+    transition: 0.3s;
+}
+
+.swiper-pagination-bullet-active {
+    background: #ff6b6b;
+    transform: scale(1.2);
+}
+
+.main-navigation {
+    padding: 1rem 2rem;
+    background: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.nav-menu a {
+    color: #2c3e50;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.nav-menu a:hover {
+    color: #3498db;
+}
+
+.text-logo {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 3.5rem;
+    line-height: 1;
+}
+
+.books {
+    color: #2196F3; /* Blue */
+}
+
+.collection {
+    color: #ff6b6b; /* Red */
+}
+
+/* Header Styles */
+.site-header {
+    background: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    padding: 1.5rem 2rem;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.site-logo {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.75rem;
+}
+
+.site-logo a {
+    text-decoration: none;
+}
+
+.books {
+    color: #2196F3; /* Blue */
+}
+
+.collection {
+    color: #ff6b6b; /* Red */
+}
+
+/* Navigation Styles */
+
+.main-navigation {
+    flex-grow: 1;
+    margin-left: 2rem;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu a {
+    color: #2c3e50;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.nav-menu a:hover {
+    color: #3498db;
+}
+
+/* Archive Hero Section */
+.archive-hero {
+    background: linear-gradient(135deg, #2196F3 0%, #21D4FD 100%);
+    padding: 4rem 2rem;
+    text-align: center;
+    color: white;
+    margin-bottom: 3rem;
+}
+
+.archive-hero h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.archive-hero p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Pagination */
+.pagination {
+    margin: 3rem 0;
+    text-align: center;
+}
+
+.pagination .page-numbers {
+    color: #2c3e50;
+    padding: 0.5rem 1rem;
+    margin: 0 0.25rem;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.pagination .current {
+    background: #3498db;
+    color: white;
+}
+
+.btn {
+    background: white;
+    color: #2196F3;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    display: inline-block;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 1rem;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    pointer-events: auto !important; /* Ensure clicks are enabled */
+    cursor: pointer; /* Show hand cursor on hover */
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* Single Book Section */
+.single-book-section {
+    padding: 3rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.single-book-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.book-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.cover-image {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    max-width: 300px; /* Adjust size as needed */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.cover-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.book-details {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.book-details h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+.book-details p {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0.5rem 0;
+    color: #636e72;
+}
+
+.book-details .description {
+    margin-top: 2rem;
+}
+
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 2rem;
+    color: #2196F3;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+/* Filter Bar */
+.filter-bar {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.filter-bar input {
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 200px;
+}
+
+.filter-bar button {
+    background: #3498db;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.filter-bar button:hover {
+    background: #2980b9;
+}
+
+.clear-filters {
+    display: inline-block;
+    margin-top: 1rem;
+    color: #e74c3c;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.clear-filters:hover {
+    text-decoration: underline;
+}
+
+/* Footer Styles */
+.site-footer {
+    background: #f9f9f9; /* Light gray background */
+    color: #333;
+    padding: 3rem 2rem;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    margin-top: 4rem; /* Add margin on top */
+}
+
+.footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    gap: 2rem;
+}
+
+.footer-logo {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.books {
+    color: #ff6b6b; /* Red (lighter shade) */
+}
+
+.collection {
+    color: #2196F3; /* Blue (lighter shade) */
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 1rem 0;
+}
+
+.social-icons a {
+    color: #333;
+    font-size: 1.2rem;
+    transition: transform 0.2s, color 0.2s;
+}
+
+.social-icons a:hover {
+    transform: scale(1.1);
+    color: #ff6b6b;
+}
+
+.copyright {
+    font-size: 0.9rem;
+    margin-top: 1rem;
+}
+
+.copyright a {
+    color: #333;
+    text-decoration: underline;
+}
+
+.social-icons {
+    margin-top: 2rem;
+}
+
+.social-icons a {
+    color: #333;
+    font-size: 1.2rem;
+    transition: transform 0.2s, color 0.2s;
+}
+
+.social-icons a:hover {
+    transform: scale(1.1);
+    color: #ff6b6b;
+}
